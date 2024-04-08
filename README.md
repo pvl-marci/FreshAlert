@@ -20,18 +20,26 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 - [Danksagungen](#danksagungen)
 
 ## Technologien
-- Arduino
+- Arduino BLE 33 Sense
 - Edge Impulse
+- Arduino IDE
 - Python
+- Telegram BotFather
 - Telegram API
 
 ## Hardwareanforderungen
-Liste der benötigten Hardware-Komponenten wie der Arduino Microcontroller, Sensoren, Kabel usw.
+
 
 ## Softwareanforderungen
+- Edge Impulse Web Interface
 - Arduino IDE
+- Telegram
 - Python
-- Bibliotheken und Abhängigkeiten für Python und Arduino
+  - serial
+  - requests
+  - time
+- 
+
 
 ## Einrichtung und Installation
 Schritte zur Einrichtung der Hardware und Installation der erforderlichen Software und Bibliotheken.
@@ -46,7 +54,9 @@ Erläuterung, wie das Modell mit Edge Impulse getestet wurde.
 Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
 
 ## Python-Script für Telegram-Nachrichten
-Beschreibung des Python-Scripts, das auf einem Windows-PC läuft, um Telegram-Nachrichten zu senden. Fügen Sie Informationen zu den erforderlichen Bibliotheken und zur Konfiguration hinzu.
+Ziel des Projekts war es, dass die Nutzenden des Mikrocontrollers eine Erinnerung zur Haltbarkeit des eingekauften Obsts/Gemüses erhalten. Dafür war in unserem Projekt die Übermittlung von Haltbarkeiten via Telegram vorgesehen. Aufgrund der Tatsache, dass es sich hierbei um die Entwicklung eines Prototypen handelt, wurden keine genauen Berechnungen zur Haltbarkeit einzelner Gemüse- bzw. Obstsorten vorgenommen. Das Skript wartet derzeit lediglich auf die Klassifizierung des Mikrocontrollers und verschickt auf Basis des Ergebnisses eine Nachricht an unseren Telegrambot via API.
+
+Dazu wurde im ersten Schritt ein Telegram-Bot mit "BotFather" erstellt. Dieser wurde im Anschluss mit allen Beteiligten zu einer gemeinsamen Telegram-Gruppe hinzugefügt. Mittels eines des "IDBot" wurde die GruppenID exportiert und zusammen mit dem Bottoken des zuvor erstellen FreshAlert Bots in ein Skript implementiert.
 
 ## Verbindung und Datenübertragung
 Erklärung, wie die USB-Verbindung zwischen dem Arduino und dem PC für die Serialerkennung eingerichtet wird.
