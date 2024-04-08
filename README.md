@@ -271,10 +271,6 @@ Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine
 
 
 
-
-
-
-![Test](Screenshots/CreatedImpulse.JPG)
-
+![Ausgabe im TelegramChat](Screenshots/chatverlauf.JPG)
 
 
