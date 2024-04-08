@@ -14,10 +14,8 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
   - [Modelldeployment via Arduino IDE](#modelldeployment-via-arduino-ide)
 - [Python-Script für Telegram-Nachrichten](#python-script-für-telegram-nachrichten)
 - [Verbindung und Datenübertragung](#verbindung-und-datenübertragung)
-- [Benutzung](#benutzung)
-- [Lizenz](#lizenz)
-- [Autoren und Beitragende](#autoren-und-beitragende)
-- [Danksagungen](#danksagungen)
+
+
 
 ## Technologien
 - Arduino BLE 33 Sense
@@ -36,6 +34,7 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 - Telegram
 - Python
 - Imports:
+  
     ```python
   import serial
   import requests
@@ -69,24 +68,23 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
    - Mithilfe von "IDBot" wird die Gruppen-ID exportiert und zusammen mit dem Bottoken des Bots in das Skript integriert.
 
 2. **Serielle Verbindung mit dem Mikrocontroller:**
+
+    ```python
+    ser = serial.Serial('COM6', 115200, timeout=1)
+    time.sleep(2) 
+    ```
+   
    - Eine serielle Verbindung mit dem Mikrocontroller wird hergestellt und konfiguriert.
    - Verwendete Funktion: `serial.Serial()`
      - `COM6`: Port, an den das Gerät angeschlossen ist.
      - `115200`: Baudrate für die serielle Kommunikation.
      - `timeout=1`: Zeitlimit für das Lesen von Daten.
-    ```python
-    ser = serial.Serial('COM6', 115200, timeout=1)
-    time.sleep(2) 
-    ```
+
+    
       
 
-3. **Funktion zur Nachrichtenübermittlung an Telegram:**
-   - Die Funktion `send_to_telegram(message)` wird erstellt, um Nachrichten an den Telegram-Bot zu senden.
-   - Die Funktion akzeptiert eine Nachricht als Argument.
-   - Platzhalter für den Bot-Token und die Chat-ID werden innerhalb der Funktion verwendet.
-   - Eine HTTPS-Anfrage-URL wird zusammengesetzt, um die Nachricht über die Telegram-API zu senden.
-   - Die Funktion gibt die Antwort der Telegram-API als JSON zurück.
-  
+4. **Funktion zur Nachrichtenübermittlung an Telegram:**
+
     ```python
     def send_to_telegram(message):
     bot_token = 'PLACEHOLDER'
@@ -96,17 +94,20 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
     response = requests.get(send_text)
     return response.json()
     ```
+   
+   - Die Funktion `send_to_telegram(message)` wird erstellt, um Nachrichten an den Telegram-Bot zu senden.
+   - Die Funktion akzeptiert eine Nachricht als Argument.
+   - Platzhalter für den Bot-Token und die Chat-ID werden innerhalb der Funktion verwendet.
+   - Eine HTTPS-Anfrage-URL wird zusammengesetzt, um die Nachricht über die Telegram-API zu senden.
+   - Die Funktion gibt die Antwort der Telegram-API als JSON zurück.
+  
+6. **Erkennung und Benachrichtigung:**
 
-4. **Erkennung und Benachrichtigung:**
-   - In einer Endlosschleife wird kontinuierlich der serielle Port auf eingehende Daten überwacht.
-   - Bei vorhandenen Daten wird eine Zeile aus dem seriellen Port gelesen, dekodiert und überflüssige Leerzeichen oder Zeilenumbrüche entfernt.
-   - Wenn bestimmte Schlüsselwörter in der empfangenen Nachricht erkannt werden, wird eine entsprechende Benachrichtigung mit Haltbarkeitsangabe erstellt und an Telegram gesendet.
-   - Erkannte Frucht- oder Gemüsesorten werden in der Konsole bestätigt, und bei Bedarf wird eine Nachricht an Telegram gesendet.
      ```python
-      while True:
-        if ser.in_waiting > 0:
-          text = ""
-          line = ser.readline().decode('utf-8').rstrip()        
+     while True:
+      if ser.in_waiting > 0:
+         text = ""
+         line = ser.readline().decode('utf-8').rstrip()        
           print("Vom Arduino erhalten:", line )
           if "Highest Value Label: banana" in line:
             text = "Banane erkannt 🍌 Sie ist noch 5 Tage haltbar"
@@ -120,6 +121,13 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
             text = "Kein Produkt erkannt 🤷‍♂️"
             print("'random' wurde erkannt - keine Nachricht an Telegram gesendet"+ "\n")          
      ```
+     
+   - In einer Endlosschleife wird kontinuierlich der serielle Port auf eingehende Daten überwacht.
+   - Bei vorhandenen Daten wird eine Zeile aus dem seriellen Port gelesen, dekodiert und überflüssige Leerzeichen oder Zeilenumbrüche entfernt.
+   - Wenn bestimmte Schlüsselwörter in der empfangenen Nachricht erkannt werden, wird eine entsprechende Benachrichtigung mit Haltbarkeitsangabe erstellt und an Telegram gesendet.
+   - Erkannte Frucht- oder Gemüsesorten werden in der Konsole bestätigt, und bei Bedarf wird eine Nachricht an Telegram gesendet.
+
+ 
 
 #### Hinweise:
 - Der Code wartet derzeit auf die Klassifizierung des Mikrocontrollers und sendet basierend auf dem Ergebnis Nachrichten an den Telegram-Bot.
@@ -132,17 +140,33 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
 
 
 ## Verbindung und Datenübertragung
-Erklärung, wie die USB-Verbindung zwischen dem Arduino und dem PC für die Serialerkennung eingerichtet wird.
 
-## Benutzung
-Anleitung, wie das System end-to-end verwendet wird, von der Gemüseerkennung bis zum Erhalt der Telegram-Nachricht.
+Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine USB-Verbindung hergestellt.
 
-## Lizenz
-Informationen zur Lizenzierung Ihres Projekts.
+1. **Arduino anschließen:**
+   - Stecken Sie den Arduino mithilfe des USB-Kabels an einen freien USB-Anschluss Ihres Windows-PCs an.
 
-## Autoren und Beitragende
-Erkennung für alle, die zum Projekt beigetragen haben.
+2. **Treiberinstallation (falls erforderlich):**
+   - In den meisten Fällen erkennt Windows automatisch den Arduino und installiert die erforderlichen Treiber.
+   - Wenn der Treiber nicht automatisch installiert wird oder Probleme auftreten, können Sie den Arduino-Treiber manuell installieren. Laden Sie den Treiber von der offiziellen Arduino-Website herunter und installieren Sie ihn.
 
-## Danksagungen
-Optional können Sie hier Danksagungen einfügen, z.B. an Personen oder Organisationen, die Ihr Projekt unterstützt haben.
+3. **Ermitteln des COM-Ports:**
+   - Öffnen Sie die Systemsteuerung auf Ihrem Windows-PC.
+   - Navigieren Sie zu "Geräte-Manager".
+   - Unter "Anschlüsse (COM & LPT)" finden Sie Ihren Arduino. Der COM-Port, der dem Arduino zugewiesen ist, wird angezeigt (z. B. COM3, COM4 usw.).
+   - Der COM-Port kann außerdem in der Arduino-IDE ermittelt werden
+
+4. **Serialerkennung im Code:**
+   - Im Programm (z. B. Python-Skript) verwenden Sie die ermittelte COM-Port-Nummer, um die serielle Verbindung herzustellen.
+   - Stellen Sie sicher, dass die Baudrate und andere Parameter korrekt konfiguriert sind, je nach den Einstellungen Ihres Arduino-Skripts.
+
+5. **Datenübertragung testen:**
+   - Sobald die Verbindung hergestellt ist, können Sie die Datenübertragung zwischen dem Arduino und dem PC testen.
+   - Lesen Sie die Daten von der seriellen Verbindung und überprüfen Sie, ob Sie Daten vom Arduino erhalten, um sicherzustellen, dass die Verbindung ordnungsgemäß funktioniert.
+
+
+
+
+
+
 
