@@ -58,11 +58,10 @@ Den Arduino entsprechend des Betriebssystems instalieren - siehe [Anleitung](htt
 Anschließend einen Account bei [EdgeImpulse](https://edgeimpulse.com/) anlegen und den Arduino als Device registrieren. 
 
 ### Modelltraining mit Edge Impulse
-Kurze Beschreibung, wie das Modell mit Edge Impulse trainiert wurde.
 Um das Modell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls insgesamt 164 Bilder aufgenommen.
 118 Bilder werden zu Training - 46 zur Validierung des Modells verwendet.
 
-Die Trainingsdaten werden entsprechend gelabelt:
+Die Trainingsdaten sind entsprechend gelabelt:
 
 | Label    | # Bilder|
 |----------|----------|
@@ -79,7 +78,7 @@ Die Trainingsdaten werden entsprechend gelabelt:
 
 
 
-#### Ansicht Data explorer in EdgeImpulse:
+#### Ansicht Data Explorer in EdgeImpulse:
 
 ![Screenshots DataSet](Screenshots/DataExporer.JPG)
 
@@ -90,6 +89,19 @@ Anschließend wird ein Impulse erstellt.
 
 
 ![Create Impulse](Screenshots/CreatedImpulse.JPG)
+
+
+Training des Modells mit folgenden Parametern:
+
+
+![NeuronalNetwork Settings](<Screenshots/NeuralNetwork Settings.JPG>)
+
+
+Accuracy des Modells beträgt 83.3 % - Loss: 0.46
+
+
+![TrainedModell](Screenshots/TrainedModel.JPG)
+
 
 
 ### Modelltesting mit Edge Impulse
