@@ -83,11 +83,18 @@ Die Trainingsdaten werden entsprechend gelabelt:
 
 ![Screenshots DataSet](Screenshots/DataExporer.JPG)
 
+Anschließend wird ein Impulse erstellt.
+" Ein Impuls nimmt Rohdaten auf, nutzt die Signalverarbeitung, um Merkmale zu extrahieren, und verwendet dann einen Lernblock, um neue Daten zu klassifizieren."(EdgeImpulse)
 
+96x96: Dies bezieht sich auf die Dimension der Eingabebilder, die das Netzwerk erwartet. In diesem Fall sind die Eingabebilder 96x96 Pixel groß
+
+
+![Create Impulse](Screenshots/CreatedImpulse.JPG)
 
 
 ### Modelltesting mit Edge Impulse
 Erläuterung, wie das Modell mit Edge Impulse getestet wurde.
+
 
 ### Modelldeployment via Arduino IDE
 Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
