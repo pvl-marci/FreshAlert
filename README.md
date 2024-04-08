@@ -127,8 +127,38 @@ Um das Kameramodul zu nutzen muss die entsprechende Bibliothek eingebunden werde
 ```cpp
 #define EI_CAMERA_RAW_FRAME_BUFFER_COLS
 ```
+Um das Label mit dem höchstem Wert aus der Reihe der Klassifizierungsergebnisse zu ermitteln und nur diesen auszugeben, wurde folgender Codeblock entwickelt
+und eingebunden:
 
+```cpp
+         
+        size_t max_index = 0;
+        float max_value = result.classification[0].value;
 
+        // Durchlaufe alle Labels, um den höchsten Wert zu finden und alle anderen Werte zu speichern
+    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+        // Speichere das Label und den Wert, wenn der Wert größer oder gleich dem bisherigen maximalen Wert ist
+        if (result.classification[ix].value >= max_value) {
+            max_index = ix;
+            max_value = result.classification[ix].value;
+      }
+
+      // Drucke das aktuelle Label und den Wert
+      ei_printf("Label: %s, Value: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+    }
+
+  // Drucke das Label mit dem höchsten Wert
+  ei_printf("Highest Value Label: %s, Value: %.5f\n", result.classification[max_index].label, result.classification[max_index].value);
+
+```
+
+Um die Klassifizierung des Modells im Prototypen zu veranschaulichen, werden alle Labels mit dem jeweiligen Value ausgegeben.
+In zukünftigen Versionen soll nur das Label mit dem höchsten Klassifizierungsergebnis ausgegeben werden - diese Anpassung kann durch das Löschen der Zeile
+
+```cpp
+ ei_printf("Label: %s, Value: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+```
+schnell erreicht werden.
 
 ## Python-Script für Telegram-Nachrichten
 ### Projektbeschreibung: Telegram-basierte Erinnerung für Haltbarkeit von Obst und Gemüse
