@@ -1,4 +1,10 @@
 # FreshAlert - TinyML-basierte Gemüseklassifizierung
+<p align="center">
+  <img src="Logo.png" alt="Beispielbild">
+</p>
+
+
+
 
 ## Überblick
 Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Zweck von FreshAlert und wie es mit einem Arduino Microcontroller arbeitet, um Gemüse zu scannen, zu klassifizieren und die Haltbarkeit des Gemüses über eine Telegram-Nachricht mitzuteilen.
@@ -168,5 +174,5 @@ Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine
 
 
 
-
+![Test](Screenshots/CreatedImpulse.JPG)
 
