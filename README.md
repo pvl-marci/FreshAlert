@@ -119,6 +119,10 @@ Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilf
 ### Modelldeployment via Arduino IDE
 Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
 
+Das als heruntergeladene Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die HArdware deployed werden.
+
+
+
 ## Python-Script für Telegram-Nachrichten
 ### Projektbeschreibung: Telegram-basierte Erinnerung für Haltbarkeit von Obst und Gemüse
 
