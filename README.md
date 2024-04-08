@@ -117,9 +117,8 @@ Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilf
 
 
 ### Modelldeployment via Arduino IDE
-Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
 
-Das als heruntergeladene Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die Hardware deployed werden.
+Das Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die Hardware deployed werden.
 
 Um das Kameramodul zu nutzen muss die entsprechende Bibliothek eingebunden werden
 
@@ -159,6 +158,8 @@ In zukünftigen Versionen soll nur das Label mit dem höchsten Klassifizierungse
  ei_printf("Label: %s, Value: %.5f\n", result.classification[ix].label, result.classification[ix].value);
 ```
 schnell erreicht werden.
+
+Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifiezeirungswert zur weiter Verarbeitung verwendet.
 
 ## Python-Script für Telegram-Nachrichten
 ### Projektbeschreibung: Telegram-basierte Erinnerung für Haltbarkeit von Obst und Gemüse
