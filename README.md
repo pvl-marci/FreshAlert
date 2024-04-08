@@ -70,8 +70,14 @@ Die Trainingsdaten werden entsprechend gelabelt:
 | Paprika  | 45  |
 | Random   | 30  |
 
+# Dataset
+![Screenshots DataSet](Screenshots/DataSet.JPG)
 
-![Test](Screenshots/DataSet.JPG)
+# Ansicht Data explorer in EdgeImpulse
+
+![Screenshots DataSet](Screenshots/DataExporer.JPG)
+
+
 
 
 ### Modelltesting mit Edge Impulse
