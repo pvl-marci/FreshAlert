@@ -3,6 +3,22 @@
 ## Überblick
 Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Zweck von FreshAlert und wie es mit einem Arduino Microcontroller arbeitet, um Gemüse zu scannen, zu klassifizieren und die Haltbarkeit des Gemüses über eine Telegram-Nachricht mitzuteilen.
 
+## Inhaltsverzeichnis
+- [Überblick](#überblick)
+- [Technologien](#technologien)
+- [Hardwareanforderungen](#hardwareanforderungen)
+- [Softwareanforderungen](#softwareanforderungen)
+- [Einrichtung und Installation](#einrichtung-und-installation)
+  - [Modelltraining mit Edge Impulse](#modelltraining-mit-edge-impulse)
+  - [Modelltesting mit Edge Impulse](#modelltesting-mit-edge-impulse)
+  - [Modelldeployment via Arduino IDE](#modelldeployment-via-arduino-ide)
+- [Python-Script für Telegram-Nachrichten](#python-script-für-telegram-nachrichten)
+- [Verbindung und Datenübertragung](#verbindung-und-datenübertragung)
+- [Benutzung](#benutzung)
+- [Lizenz](#lizenz)
+- [Autoren und Beitragende](#autoren-und-beitragende)
+- [Danksagungen](#danksagungen)
+
 ## Technologien
 - Arduino
 - Edge Impulse
