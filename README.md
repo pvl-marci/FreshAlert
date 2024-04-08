@@ -169,14 +169,13 @@ Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine
 5. **Datenübertragung testen:**
    - Sobald die Verbindung hergestellt ist, können Sie die Datenübertragung zwischen dem Arduino und dem PC testen.
    - Lesen Sie die Daten von der seriellen Verbindung und überprüfen Sie, ob Sie Daten vom Arduino erhalten, um sicherzustellen, dass die Verbindung ordnungsgemäß funktioniert.
-   - TEST TEST TEST
 
 
 
 
 
-![Test](Screenshots/CreatedImpulse.JPG)
 
 ![Test](Screenshots/CreatedImpulse.JPG)
+
 
 
