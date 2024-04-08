@@ -59,9 +59,12 @@ Anschließend einen Account bei [EdgeImpulse](https://edgeimpulse.com/) anlegen 
 
 ### Modelltraining mit Edge Impulse
 Kurze Beschreibung, wie das Modell mit Edge Impulse trainiert wurde.
-Um das MOdell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls 
+Um das Modell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls insgesamt 164 Bilder aufgenommen.
+118 Bilder werden zu Training - 46 zur Validierung des Modells verwendet.
 
-| Label    | Anzahl Bilder|
+Die Trainingsdaten werden entsprechend gelabelt:
+
+| Label    | # Bilder|
 |----------|----------|
 | Banane   | 43  |
 | Paprika  | 45  |
