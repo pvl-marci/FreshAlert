@@ -58,6 +58,11 @@ Ziel des Projekts war es, dass die Nutzenden des Mikrocontrollers eine Erinnerun
 
 Dazu wurde im ersten Schritt ein Telegram-Bot mit "BotFather" erstellt. Dieser wurde im Anschluss mit allen Beteiligten zu einer gemeinsamen Telegram-Gruppe hinzugefügt. Mittels eines des "IDBot" wurde die GruppenID exportiert und zusammen mit dem Bottoken des zuvor erstellen FreshAlert Bots in ein Skript implementiert.
 
+```python
+def hello_world():
+print("Hello, world!")
+```
+
 ## Verbindung und Datenübertragung
 Erklärung, wie die USB-Verbindung zwischen dem Arduino und dem PC für die Serialerkennung eingerichtet wird.
 
