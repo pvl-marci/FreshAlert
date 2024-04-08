@@ -32,6 +32,10 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 - Telegram API
 
 ## Hardwareanforderungen
+- Arduino BLE 33 Sense
+- Kameramodul (OV7675)
+- USB-Kabel 
+- Laptop (dient als Server) #notwending?
 
 
 ## Softwareanforderungen
@@ -50,10 +54,22 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 
 
 ## Einrichtung und Installation
-Schritte zur Einrichtung der Hardware und Installation der erforderlichen Software und Bibliotheken.
+Den Arduino entsprechend des Betriebssystems instalieren - siehe [Anleitung](https://www.arduino.cc/en/software).
+Anschließend einen Account bei [EdgeImpulse](https://edgeimpulse.com/) anlegen und den Arduino als Device registrieren. 
 
 ### Modelltraining mit Edge Impulse
 Kurze Beschreibung, wie das Modell mit Edge Impulse trainiert wurde.
+Um das MOdell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls 
+
+| Label    | Anzahl Bilder|
+|----------|----------|
+| Banane   | 43  |
+| Paprika  | 45  |
+| Random   | 30  |
+
+
+
+
 
 ### Modelltesting mit Edge Impulse
 Erläuterung, wie das Modell mit Edge Impulse getestet wurde.
