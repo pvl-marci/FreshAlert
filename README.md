@@ -32,6 +32,10 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 - Telegram API
 
 ## Hardwareanforderungen
+- Arduino BLE 33 Sense
+- Kameramodul (OV7675)
+- USB-Kabel 
+- Laptop (dient als Server) #notwending?
 
 
 ## Softwareanforderungen
@@ -50,16 +54,112 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 
 
 ## Einrichtung und Installation
-Schritte zur Einrichtung der Hardware und Installation der erforderlichen Software und Bibliotheken.
+Den Arduino entsprechend des Betriebssystems instalieren - siehe [Anleitung](https://www.arduino.cc/en/software).
+Anschließend einen Account bei [EdgeImpulse](https://edgeimpulse.com/) anlegen und den Arduino als Device registrieren. 
 
 ### Modelltraining mit Edge Impulse
-Kurze Beschreibung, wie das Modell mit Edge Impulse trainiert wurde.
+Um das Modell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls insgesamt 164 Bilder aufgenommen.
+118 Bilder werden zu Training - 46 zur Validierung des Modells verwendet.
+
+Die Trainingsdaten sind entsprechend gelabelt:
+
+| Label    | # Bilder|
+|----------|----------|
+| Banane   | 43  |
+| Paprika  | 45  |
+| Random   | 30  |
+
+
+
+#### Dataset:
+
+![Screenshots DataSet](Screenshots/DataSet.JPG)
+
+
+
+
+#### Ansicht Data Explorer in EdgeImpulse:
+
+![Screenshots DataSet](Screenshots/DataExporer.JPG)
+
+Anschließend wird ein Impulse erstellt.
+" Ein Impuls nimmt Rohdaten auf, nutzt die Signalverarbeitung, um Merkmale zu extrahieren, und verwendet dann einen Lernblock, um neue Daten zu klassifizieren."(EdgeImpulse)
+
+96x96: Dies bezieht sich auf die Dimension der Eingabebilder, die das Netzwerk erwartet. In diesem Fall sind die Eingabebilder 96x96 Pixel groß
+
+
+![Create Impulse](Screenshots/CreatedImpulse.JPG)
+
+
+Training des Modells mit folgenden Parametern:
+
+
+![NeuronalNetwork Settings](<Screenshots/NeuralNetwork Settings.JPG>)
+
+
+Accuracy des Modells beträgt 83.3 % - Loss: 0.46 mit entsprechender On-Devices performance (Estimate for Arduino Nano 33 BLE Sense)
+
 
 ### Modelltesting mit Edge Impulse
-Erläuterung, wie das Modell mit Edge Impulse getestet wurde.
+
+![TrainedModell](Screenshots/TrainedModel.JPG)
+
+
+Modell testing Ergebnis:
+
+![ModellTestingResults](Screenshots/ModelTestingResults.JPG)
+
+
+Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilfe der ArduinoIDE auf der Hardware zu deployen.
+
+![defaultDeployment](Screenshots/DefaultDeployment.JPG)
+
+
 
 ### Modelldeployment via Arduino IDE
-Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
+
+Das Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die Hardware deployed werden.
+
+Um das Kameramodul zu nutzen muss die entsprechende Bibliothek eingebunden werden
+
+
+```cpp
+#define EI_CAMERA_RAW_FRAME_BUFFER_COLS
+```
+Um das Label mit dem höchstem Wert aus der Reihe der Klassifizierungsergebnisse zu ermitteln und nur diesen auszugeben, wurde folgender Codeblock entwickelt
+und eingebunden:
+
+```cpp
+         
+        size_t max_index = 0;
+        float max_value = result.classification[0].value;
+
+        // Durchlaufe alle Labels, um den höchsten Wert zu finden und alle anderen Werte zu speichern
+    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+        // Speichere das Label und den Wert, wenn der Wert größer oder gleich dem bisherigen maximalen Wert ist
+        if (result.classification[ix].value >= max_value) {
+            max_index = ix;
+            max_value = result.classification[ix].value;
+      }
+
+      // Drucke das aktuelle Label und den Wert
+      ei_printf("Label: %s, Value: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+    }
+
+  // Drucke das Label mit dem höchsten Wert
+  ei_printf("Highest Value Label: %s, Value: %.5f\n", result.classification[max_index].label, result.classification[max_index].value);
+
+```
+
+Um die Klassifizierung des Modells im Prototypen zu veranschaulichen, werden alle Labels mit dem jeweiligen Value ausgegeben.
+In zukünftigen Versionen soll nur das Label mit dem höchsten Klassifizierungsergebnis ausgegeben werden - diese Anpassung kann durch das Löschen der Zeile
+
+```cpp
+ ei_printf("Label: %s, Value: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+```
+schnell erreicht werden.
+
+Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifiezeirungswert zur weiter Verarbeitung verwendet.
 
 ## Python-Script für Telegram-Nachrichten
 ### Projektbeschreibung: Telegram-basierte Erinnerung für Haltbarkeit von Obst und Gemüse
@@ -172,7 +272,6 @@ Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine
 
 
 
+![Ausgabe im TelegramChat](Screenshots/chatverlauf.JPG)
 
-
-![Test](Screenshots/CreatedImpulse.JPG)
 
