@@ -119,7 +119,14 @@ Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilf
 ### Modelldeployment via Arduino IDE
 Anleitung, wie das Modell auf den Arduino Microcontroller über die Arduino IDE deployt wurde.
 
-Das als heruntergeladene Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die HArdware deployed werden.
+Das als heruntergeladene Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die Hardware deployed werden.
+
+Um das Kameramodul zu nutzen muss die entsprechende Bibliothek eingebunden werden
+
+
+```cpp
+#define EI_CAMERA_RAW_FRAME_BUFFER_COLS
+```
 
 
 
