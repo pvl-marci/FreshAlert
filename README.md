@@ -97,15 +97,23 @@ Training des Modells mit folgenden Parametern:
 ![NeuronalNetwork Settings](<Screenshots/NeuralNetwork Settings.JPG>)
 
 
-Accuracy des Modells beträgt 83.3 % - Loss: 0.46
+Accuracy des Modells beträgt 83.3 % - Loss: 0.46 mit entsprechender On-Devices performance (Estimate for Arduino Nano 33 BLE Sense)
 
+
+### Modelltesting mit Edge Impulse
 
 ![TrainedModell](Screenshots/TrainedModel.JPG)
 
 
+Modell testing Ergebnis:
 
-### Modelltesting mit Edge Impulse
-Erläuterung, wie das Modell mit Edge Impulse getestet wurde.
+![ModellTestingResults](Screenshots/ModelTestingResults.JPG)
+
+
+Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilfe der ArduinoIDE auf der Hardware zu deployen.
+
+![defaultDeployment](Screenshots/DefaultDeployment.JPG)
+
 
 
 ### Modelldeployment via Arduino IDE
