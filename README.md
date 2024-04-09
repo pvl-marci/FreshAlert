@@ -83,7 +83,7 @@ Die Größe von 96x96 bezieht sich auf die Dimension der Eingabebilder, die das 
 
 <img src="Screenshots/CreatedImpulse.JPG" alt="Create Impulse" width="600">
 
-Training des Modells mit folgenden Parametern:
+#### Training des Modells mit folgenden Parametern:
 
 <img src="Screenshots/NeuralNetwork Settings.JPG" alt="NeuronalNetwork Settings" width="500">
 
@@ -93,7 +93,7 @@ Die Genauigkeit des Modells beträgt 83,3% bei einem Verlust von 0,46, und es wi
 
 <img src="Screenshots/TrainedModel.JPG" alt="TrainedModell" width="500">
 
-**Ergebnis des Modelltests:**
+#### Ergebnis des Modelltests:
 
 <img src="Screenshots/ModelTestingResults.JPG" alt="ModellTestingResults" width="500">
 
@@ -105,7 +105,7 @@ Zum Abschluss kann das Modell als Arduino-Bibliothek heruntergeladen werden, um 
 
 Das Modell kann mithilfe der Arduino IDE angepasst und anschließend als Sketch auf die Hardware übertragen werden.
 
-Um das Kameramodul zu nutzen, ist es erforderlich, die entsprechende Bibliothek einzubinden
+Um das Kameramodul zu nutzen, ist es erforderlich die entsprechende Bibliothek einzubinden
 
 ```cpp
 #define EI_CAMERA_RAW_FRAME_BUFFER_COLS
@@ -145,7 +145,7 @@ In zukünftigen Versionen soll nur das Label mit dem höchsten Klassifizierungse
 
 schnell erreicht werden.
 
-Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifiezeirungswert zur Weiterverarbeitung verwendet.
+Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifizierungswert zur Weiterverarbeitung verwendet.
 
 ## Python-Script für Telegram-Nachrichten
 
