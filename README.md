@@ -7,7 +7,7 @@
 
 
 ## Überblick
-Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Zweck von FreshAlert und wie es mit einem Arduino Microcontroller arbeitet, um Gemüse zu scannen, zu klassifizieren und die Haltbarkeit des Gemüses über eine Telegram-Nachricht mitzuteilen.
+FreshAlert kombiniert die Leistungsfähigkeit von Mikrocontrollern mit TinyML für die Erkennung von Obst und Gemüse. Mithilfe dieser Technologie werden Lebensmittel identifiziert und ihre Haltbarkeit überwacht. Durch die nahtlose Integration von Telegram-Benachrichtigungen sollen die Benutzer rechtzeitig informiert werden, um Lebensmittelabfälle zu reduzieren. Unser Ziel war es, das Bewusstsein für Nachhaltigkeit zu fördern und dazu beizutragen, dass weniger Essen verschwendet wird
 
 ## Inhaltsverzeichnis
 - [Überblick](#überblick)
@@ -35,7 +35,7 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 - Arduino BLE 33 Sense
 - Kameramodul (OV7675)
 - USB-Kabel 
-- Laptop (dient als Server) #notwending?
+- Laptop (dient als Server)
 
 
 ## Softwareanforderungen
@@ -54,12 +54,10 @@ Kurze Beschreibung des Projekts und seiner Hauptfunktionen. Erläutern Sie den Z
 
 
 ## Einrichtung und Installation
-Den Arduino entsprechend des Betriebssystems instalieren - siehe [Anleitung](https://www.arduino.cc/en/software).
-Anschließend einen Account bei [EdgeImpulse](https://edgeimpulse.com/) anlegen und den Arduino als Device registrieren. 
+Der Benutzer installiert zuerst die Arduino-Software gemäß den Anweisungen für sein Betriebssystem, die in der  [Anleitung](https://www.arduino.cc/en/software) zu finden sind. Anschließend legt er ein Konto bei [EdgeImpulse](https://edgeimpulse.com/) an und registriert das Arduino-Board als Gerät.
 
 ### Modelltraining mit Edge Impulse
-Um das Modell den Anforderungen entsprechend zu trainieren, wurden mit Hilfe des Kameramoduls insgesamt 164 Bilder aufgenommen.
-118 Bilder werden zu Training - 46 zur Validierung des Modells verwendet.
+Um das Modell entsprechend den Anforderungen zu trainieren, werden insgesamt 164 Bilder mit Hilfe des Kameramoduls aufgenommen. Davon werden 118 Bilder für das Training und 46 Bilder zur Validierung des Modells verwendet.
 
 Die Trainingsdaten sind entsprechend gelabelt:
 
@@ -73,54 +71,56 @@ Die Trainingsdaten sind entsprechend gelabelt:
 
 #### Dataset:
 
-![Screenshots DataSet](Screenshots/DataSet.JPG)
+<img src="Screenshots/DataSet.JPG" alt="Screenshots DataSet" width="500">
+
 
 
 
 
 #### Ansicht Data Explorer in EdgeImpulse:
+<img src="Screenshots/DataExporer.JPG" alt="Screenshots DataExporer" width="500">
 
-![Screenshots DataSet](Screenshots/DataExporer.JPG)
 
 Anschließend wird ein Impulse erstellt.
-" Ein Impuls nimmt Rohdaten auf, nutzt die Signalverarbeitung, um Merkmale zu extrahieren, und verwendet dann einen Lernblock, um neue Daten zu klassifizieren."(EdgeImpulse)
+"Ein Impuls nimmt Rohdaten auf, nutzt die Signalverarbeitung, um Merkmale zu extrahieren, und verwendet dann einen Lernblock, um neue Daten zu klassifizieren."(EdgeImpulse)
 
-96x96: Dies bezieht sich auf die Dimension der Eingabebilder, die das Netzwerk erwartet. In diesem Fall sind die Eingabebilder 96x96 Pixel groß
+Die Größe von 96x96 bezieht sich auf die Dimension der Eingabebilder, die das Netzwerk erwartet. Das bedeutet, dass die Eingabebilder eine Auflösung von 96x96 Pixel haben müsse
 
 
-![Create Impulse](Screenshots/CreatedImpulse.JPG)
-
+<img src="Screenshots/CreatedImpulse.JPG" alt="Create Impulse" width="600">
 
 Training des Modells mit folgenden Parametern:
 
+<img src="Screenshots/NeuralNetwork Settings.JPG" alt="NeuronalNetwork Settings" width="500">
 
-![NeuronalNetwork Settings](<Screenshots/NeuralNetwork Settings.JPG>)
 
 
-Accuracy des Modells beträgt 83.3 % - Loss: 0.46 mit entsprechender On-Devices performance (Estimate for Arduino Nano 33 BLE Sense)
+Die Genauigkeit des Modells beträgt 83,3% bei einem Verlust von 0,46, und es wird eine entsprechende Leistung auf dem Gerät erwartet (Schätzung für Arduino Nano 33 BLE Sense).
 
 
 ### Modelltesting mit Edge Impulse
 
-![TrainedModell](Screenshots/TrainedModel.JPG)
+<img src="Screenshots/TrainedModel.JPG" alt="TrainedModell" width="500">
 
 
-Modell testing Ergebnis:
+**Ergebnis des Modelltests:**
 
-![ModellTestingResults](Screenshots/ModelTestingResults.JPG)
+<img src="Screenshots/ModelTestingResults.JPG" alt="ModellTestingResults" width="500">
 
 
-Abschließend das Modell als Arduino Libary herunterladen um das Modell mit Hilfe der ArduinoIDE auf der Hardware zu deployen.
+Zum Abschluss kann das Modell als Arduino-Bibliothek heruntergeladen werden, um es mithilfe der Arduino-IDE auf der Hardware bereitzustellen.
 
-![defaultDeployment](Screenshots/DefaultDeployment.JPG)
+<img src="Screenshots/DefaultDeployment.JPG" alt="defaultDeployment" width="500">
+
+
 
 
 
 ### Modelldeployment via Arduino IDE
 
-Das Modell kann mit Hilfe der ArduinoIDE in Form eines Sketch angepasst und anschließend auf die Hardware deployed werden.
+Das Modell kann mithilfe der Arduino IDE angepasst und anschließend als Sketch auf die Hardware übertragen werden.
 
-Um das Kameramodul zu nutzen muss die entsprechende Bibliothek eingebunden werden
+Um das Kameramodul zu nutzen, ist es erforderlich, die entsprechende Bibliothek einzubinden
 
 
 ```cpp
@@ -159,7 +159,7 @@ In zukünftigen Versionen soll nur das Label mit dem höchsten Klassifizierungse
 ```
 schnell erreicht werden.
 
-Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifiezeirungswert zur weiter Verarbeitung verwendet.
+Wie im Python-Script ersichtlich, wird bereits nur das Label mit dem höchsten Klassifiezeirungswert zur Weiterverarbeitung verwendet.
 
 ## Python-Script für Telegram-Nachrichten
 ### Projektbeschreibung: Telegram-basierte Erinnerung für Haltbarkeit von Obst und Gemüse
