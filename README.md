@@ -55,6 +55,7 @@ FreshAlert kombiniert die Leistungsfähigkeit von Mikrocontrollern mit TinyML f�
 ## Einrichtung und Installation
 
 Der Benutzer installiert zuerst die Arduino-Software gemäß den Anweisungen für sein Betriebssystem, die in der [Anleitung](https://www.arduino.cc/en/software) zu finden sind. Anschließend legt er ein Konto bei [EdgeImpulse](https://edgeimpulse.com/) an und registriert das Arduino-Board als Gerät.
+Weitere Infos - siehe [Verbindung und Datenübertragung](#verbindung-und-datenübertragung)
 
 ### Modelltraining mit Edge Impulse
 
