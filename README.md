@@ -20,7 +20,7 @@ FreshAlert kombiniert die Leistungsfähigkeit von Mikrocontrollern mit TinyML f�
   - [Modelldeployment via Arduino IDE](#modelldeployment-via-arduino-ide)
 - [Python-Script für Telegram-Nachrichten](#python-script-für-telegram-nachrichten)
 - [Verbindung und Datenübertragung](#verbindung-und-datenübertragung)
-
+- [Learnings und Ausblicke](#learnings-und-ausblicke)
 
 
 ## Technologien
@@ -189,7 +189,7 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
     
       
 
-4. **Funktion zur Nachrichtenübermittlung an Telegram:**
+3. **Funktion zur Nachrichtenübermittlung an Telegram:**
 
     ```python
     def send_to_telegram(message):
@@ -207,7 +207,7 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
    - Eine HTTPS-Anfrage-URL wird zusammengesetzt, um die Nachricht über die Telegram-API zu senden.
    - Die Funktion gibt die Antwort der Telegram-API als JSON zurück.
   
-6. **Erkennung und Benachrichtigung:**
+4. **Erkennung und Benachrichtigung:**
 
      ```python
      while True:
@@ -232,6 +232,11 @@ Das Ziel des Projekts besteht darin, den Nutzern eines Mikrocontrollers eine Eri
    - Bei vorhandenen Daten wird eine Zeile aus dem seriellen Port gelesen, dekodiert und überflüssige Leerzeichen oder Zeilenumbrüche entfernt.
    - Wenn bestimmte Schlüsselwörter in der empfangenen Nachricht erkannt werden, wird eine entsprechende Benachrichtigung mit Haltbarkeitsangabe erstellt und an Telegram gesendet.
    - Erkannte Frucht- oder Gemüsesorten werden in der Konsole bestätigt, und bei Bedarf wird eine Nachricht an Telegram gesendet.
+
+5. **Ergebnis:**
+   
+   <img src="Screenshots/chatverlauf.JPG" alt="Ausgabe im TelegramChat" width="200">
+
 
  
 
@@ -270,8 +275,22 @@ Um die Daten des Arduinos in einer Telegram-Nachricht zu verarbeiten, wurde eine
    - Sobald die Verbindung hergestellt ist, können Sie die Datenübertragung zwischen dem Arduino und dem PC testen.
    - Lesen Sie die Daten von der seriellen Verbindung und überprüfen Sie, ob Sie Daten vom Arduino erhalten, um sicherzustellen, dass die Verbindung ordnungsgemäß funktioniert.
 
+## Learnings und Ausblicke
+
+Unsere Erfahrungen und Ausblicke aus dem Projekt umfassen:
+
+- **TinyML für Bilderkennung:** Wir haben festgestellt, dass TinyML möglicherweise eher ungeeignet für die Klassifizierung von Bildern ist, insbesondere wenn die Datenkomplexität hoch ist. Für die Erkennung von Objekten in Bildern ist TinyML jedoch durchaus geeignet und bietet vielversprechende Anwendungsmöglichkeiten.
+
+- **Übertragung via BLE:** Anstatt einen Laptop als Zwischenserver zu verwenden, könnte eine direkte Übertragung der Daten über Bluetooth Low Energy (BLE) in Betracht gezogen werden. Dies würde die Abhängigkeit von einem separaten Computer reduzieren und die Mobilität des Systems verbessern.
+
+- **Mehr Zeit für Training:** Mit mehr Zeit zur Verfügung, beispielsweise mehr als die zwei Wochen, die wir für das Projekt hatten, wäre es möglich gewesen, das Modell mit einer größeren und vielfältigeren Datenmenge zu trainieren. Durch die Verwendung von mehr Bildern verschiedener Bananen- und Paprikasorten hätten wir die Genauigkeit des Modells möglicherweise verbessern können.
+
+Diese Erkenntnisse helfen uns, zukünftige Projekte besser zu planen und effektiver umzusetzen. Wir sind gespannt darauf, diese Learnings in zukünftigen Entwicklungen anzuwenden und die Möglichkeiten von TinyML weiter zu erkunden.
 
 
-![Ausgabe im TelegramChat](Screenshots/chatverlauf.JPG)
+
+
+
+
 
 
